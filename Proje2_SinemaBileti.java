@@ -8,31 +8,22 @@
 import java.util.Scanner;
 
 class Proje2_SinemaBileti{
-    static String gunText = "";
-    static String filmText = "";
 
     static boolean isWeekend(int gun){
         switch (gun) {
-            case 1:
-                gunText = "Pazartesi";
+            case 1: // Pazartesi
                 return false;
-            case 2:
-                gunText = "Sali";
+            case 2: // Salı
                 return false;
-            case 3:
-                gunText = "Carsamba";
+            case 3: // Çarşamba
                 return false;
-            case 4:
-                gunText = "Persembe";
+            case 4: // Perşembe
                 return false;
-            case 5:
-                gunText = "Cuma";
+            case 5: // Cuma
                 return false;
-            case 6:
-                gunText = "Cumartesi";
+            case 6: // Cumartesi
                 return true;
-            case 7:
-                gunText = "Pazar";
+            case 7: // Pazar
                 return true;
             default:
                 throw new AssertionError();
@@ -56,12 +47,48 @@ class Proje2_SinemaBileti{
     }
 
     static void generateTicketInfo(int Gun, int saat, int yas, String meslek, int filmturu){
-        System.out.println("Gun (1-7)        : " + Gun + " (" + gunText + ")");
+        switch(Gun){
+            case 1:
+                System.out.println("Gun (1-7)        : " + Gun + " (Pazartesi)");
+                break;
+            case 2:
+                System.out.println("Gun (1-7)        : " + Gun + " (Sali)");
+                break;
+            case 3:
+                System.out.println("Gun (1-7)        : " + Gun + " (Carsamba)");
+                break;
+            case 4:
+                System.out.println("Gun (1-7)        : " + Gun + " (Persembe)");
+                break;
+            case 5:
+                System.out.println("Gun (1-7)        : " + Gun + " (Cuma)");
+                break;
+            case 6:
+                System.out.println("Gun (1-7)        : " + Gun + " (Cumartesi)");
+                break;
+            case 7:
+                System.out.println("Gun (1-7)        : " + Gun + " (Pazar)");
+                break;
+        }
+        
         if(saat < 12) {System.out.println("Saat (8-23)      : " + saat + " (Matine)");} 
         else{System.out.println("Saat (8-23)      : " + saat + " (Normal)");}
         System.out.println("Yas              : " + yas);
         System.out.println("Meslek           : " + meslek);
-        System.out.println("Film Turu (1-4)  : " + filmturu + " (" + filmText + ")");
+        switch(filmturu){
+            case 1:
+                System.out.println("Film Turu (1-4)  : " + filmturu + " (2D)");
+                break;
+            case 2:
+                System.out.println("Film Turu (1-4)  : " + filmturu + " (3D)");
+                break;
+            case 3:
+                System.out.println("Film Turu (1-4)  : " + filmturu + " (IMAX)");
+                break;
+            case 4:
+                System.out.println("Film Turu (1-4)  : " + filmturu + " (4DX)");
+                break;
+        }
         System.out.println("===============");
         System.out.println("Temel Fiyat     : " + calculateBasePrice(Gun, saat));
         System.out.println("Indirim         : " + "%" +(calculateDiscount(yas, meslek, Gun) * 100));
@@ -73,16 +100,12 @@ class Proje2_SinemaBileti{
     static double getFormatExtra(int filmturu){
         switch (filmturu) {
             case 1: // 2D
-                filmText = "2D";
                 return 0;
             case 2: // 3D
-                filmText = "3D";
                 return 25;
             case 3: // IMAX
-                filmText = "IMAX";
                 return 35;
             case 4: // 4DX
-                filmText = "4DX";
                 return 50;
             default:
                 throw new AssertionError();
